@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Home Delivery Request | Pat's Donuts</title>
+  <meta name="description" content="Build a home delivery request for Pat's Donuts in Carrollton, Texas.">
+  <link rel="icon" href="/assets/pats-donuts-logo.png">
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body class="delivery-page-body">
+  <header class="topbar">
+    <div class="wrap nav-row">
+      <a class="brand" href="/" aria-label="Pat's Donuts home">
+        <img src="/assets/pats-donuts-logo.png" alt="Pat's Donuts logo">
+        <span>Pat's Donuts</span>
+      </a>
+      <nav class="nav-links"><a href="/">Home</a><a href="http://places.singleplatform.com/pats-donut-shop/menu?ref=google" target="_blank" rel="noopener noreferrer">Menu ↗</a><a class="nav-cta" href="tel:+19724189543">Call shop</a></nav>
+    </div>
+  </header>
+
+  <main class="order-main">
+    <div class="wrap order-head">
+      <div><span class="eyebrow">Home delivery</span><h1>Build your <em>sweet run.</em></h1><p>Choose what you need, your preferred delivery time, and where it should go. Pat's Donuts will confirm availability, delivery area, timing, and total.</p></div>
+      <div class="order-badge"><strong>Web3Forms</strong><span>secure request delivery</span></div>
+    </div>
+
+    <div class="wrap order-layout">
+      <form id="delivery-form" class="order-form" novalidate>
+        <section class="order-panel">
+          <div class="panel-title"><span>01</span><div><h2>Build your order</h2><p>Choose quantities. Availability is confirmed by the shop.</p></div></div>
+          <div class="product-grid" id="product-grid"></div>
+          <div class="field full"><label for="custom-request">Anything else?</label><textarea id="custom-request" name="custom_request" rows="4" maxlength="1200" placeholder="Example: assorted flavors, no nuts, office order, birthday note..."></textarea></div>
+        </section>
+
+        <section class="order-panel">
+          <div class="panel-title"><span>02</span><div><h2>Delivery details</h2><p>Tell us where and when you'd like the order delivered.</p></div></div>
+          <div class="form-grid two">
+            <div class="field"><label for="delivery-date">Preferred date *</label><input id="delivery-date" name="preferred_date" type="date" required></div>
+            <div class="field"><label for="delivery-time">Preferred time *</label><input id="delivery-time" name="preferred_time" type="time" required></div>
+          </div>
+          <div class="field"><label for="address">Delivery address *</label><input id="address" name="delivery_address" type="text" autocomplete="street-address" maxlength="180" required placeholder="Street address"></div>
+          <div class="form-grid three">
+            <div class="field"><label for="city">City *</label><input id="city" name="city" type="text" autocomplete="address-level2" value="Carrollton" maxlength="80" required></div>
+            <div class="field"><label for="state">State *</label><input id="state" name="state" type="text" autocomplete="address-level1" value="TX" maxlength="40" required></div>
+            <div class="field"><label for="zip">ZIP *</label><input id="zip" name="zip" type="text" inputmode="numeric" autocomplete="postal-code" maxlength="10" required></div>
+          </div>
+          <div class="field"><label for="delivery-notes">Delivery notes</label><textarea id="delivery-notes" name="delivery_notes" rows="3" maxlength="800" placeholder="Apartment/gate code, office name, drop-off instructions..."></textarea></div>
+        </section>
+
+        <section class="order-panel">
+          <div class="panel-title"><span>03</span><div><h2>Your details</h2><p>The shop uses these details to confirm your request.</p></div></div>
+          <div class="form-grid two">
+            <div class="field"><label for="name">Name *</label><input id="name" name="name" type="text" autocomplete="name" maxlength="100" required></div>
+            <div class="field"><label for="phone">Phone *</label><input id="phone" name="phone" type="tel" autocomplete="tel" maxlength="30" required></div>
+          </div>
+          <div class="field"><label for="email">Email *</label><input id="email" name="email" type="email" autocomplete="email" maxlength="160" required></div>
+          <div class="field check-field"><label><input type="checkbox" name="consent" required><span>I understand this is a delivery request, not a paid or confirmed order. Pat's Donuts will need to confirm availability, delivery area, timing, and total.</span></label></div>
+          <input type="text" name="website" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <div id="form-status" class="form-status" role="status" aria-live="polite"></div>
+          <button id="submit-order" class="button primary order-submit" type="submit">Send delivery request <span>→</span></button>
+        </section>
+      </form>
+
+      <aside class="order-summary" aria-label="Order summary">
+        <div class="summary-logo"><img src="/assets/pats-donuts-logo.png" alt="Pat's Donuts"></div>
+        <span class="eyebrow">Your request</span>
+        <h2>Sweet summary.</h2>
+        <div id="summary-items" class="summary-items"><p class="empty-summary">Choose an item to start your order.</p></div>
+        <div class="summary-divider"></div>
+        <div class="summary-row"><span>Items selected</span><strong id="summary-count">0</strong></div>
+        <div class="summary-row"><span>Price</span><strong>Confirmed by shop</strong></div>
+        <p class="summary-note">Delivery availability and any fees depend on the address and order. The shop will confirm before the order is final.</p>
+        <a href="tel:+19724189543" class="summary-call">Need help? Call (972) 418-9543</a>
+      </aside>
+    </div>
+
+    <div id="success-screen" class="success-screen wrap" hidden>
+      <div class="success-donut">✓</div>
+      <span class="eyebrow">Request sent</span>
+      <h2>We got your sweet plans.</h2>
+      <p>Your delivery request was sent to Pat's Donuts. The shop still needs to confirm item availability, delivery area, timing, and total before it becomes an order.</p>
+      <div id="success-summary" class="success-summary"></div>
+      <div class="success-actions"><a class="button primary" href="tel:+19724189543">Call the shop</a><a class="button ghost dark" href="/">Back to home</a></div>
+    </div>
+  </main>
+  <script src="/assets/delivery.js" defer></script>
+</body>
+</html>

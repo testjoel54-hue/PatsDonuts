@@ -1,0 +1,10 @@
+import { rm, mkdir, cp } from 'node:fs/promises';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
+const src=path.join(root,'site');
+const out=path.join(root,'dist');
+await rm(out,{recursive:true,force:true});
+await mkdir(out,{recursive:true});
+await cp(src,out,{recursive:true});
+console.log('Built static site to dist/');
